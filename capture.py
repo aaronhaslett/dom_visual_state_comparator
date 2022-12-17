@@ -77,7 +77,9 @@ with sync_playwright() as p:
             # TODO: make this wait for something instead
             time.sleep(10)
 
-            print("Calculating capture (mostly calling getComputedStyles on everything)")
+            print(
+                "Calculating capture (mostly calling getComputedStyles on everything)"
+            )
             print("Calculating for head")
             head_results = details(page.locator("head").first)
             print("Calculating for body")
