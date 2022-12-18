@@ -57,7 +57,7 @@ def get_spec(capture_spec_name):
 
     if not URLS_YML_SECTION_NAME in spec:
         print(
-            "ERROR: {} section not fonud in spec file {}".format(
+            "ERROR: {} section not found in spec file {}".format(
                 URLS_YML_SECTION_NAME, capture_spec_filename
             )
         )
@@ -68,6 +68,14 @@ def get_spec(capture_spec_name):
     if type(urls) is not list:
         print(
             "ERROR: {} section in spec file {} isn't a list".format(
+                URLS_YML_SECTION_NAME, capture_spec_filename
+            )
+        )
+        exit(1)
+
+    if len(urls) == 0 or any(not url for url in urls):
+        print(
+            "ERROR: {} section in spec file {} is empty or has empty entries".format(
                 URLS_YML_SECTION_NAME, capture_spec_filename
             )
         )
